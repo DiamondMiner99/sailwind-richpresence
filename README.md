@@ -5,7 +5,7 @@ Shows what you are doing in Sailwind on your Discord profile.
 ## Features
 
 - The first line says where you are: the boat you are on and whether it is moored, anchored or at sea,
-  or that you are ashore, swimming, asleep or at the shipyard.
+  or that you are ashore, at home in a house you own, swimming, asleep or at the shipyard.
 - The port is named when you are moored in it or walking around it.
 - At sea the line reads "At sea", names the region ("At sea in Aestrin"), or, soon after leaving port,
   names the port you left ("Out of Fort Aestrin"). The choice is made at random and changes every 4 to 8
@@ -41,7 +41,7 @@ BepInEx\
       SailwindRichPresence.dll
 ```
 
-Built against Sailwind 0.38.1. Nothing else needs to be installed. If Discord is closed or restarts, the
+Built against Sailwind 0.39. Nothing else needs to be installed. If Discord is closed or restarts, the
 status comes back within 20 seconds of Discord starting again.
 
 ## Sailwind Co-op

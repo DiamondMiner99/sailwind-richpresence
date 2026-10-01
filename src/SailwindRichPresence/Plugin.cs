@@ -13,7 +13,7 @@ namespace SailwindRichPresence
         public const string PluginName = "Sailwind Rich Presence";
         // BepInEx 5 parses this as a strict System.Version. No SemVer suffixes, or the plugin
         // silently fails to load with no error.
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "0.1.1";
 
         /// <summary>Only used to load after Sailwind Co-op when it is installed. Nothing references it.</summary>
         public const string CoopGuid = "com.sailwindcoop.mod";

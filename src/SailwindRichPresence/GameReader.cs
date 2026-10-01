@@ -105,6 +105,9 @@ namespace SailwindRichPresence
             if (boat != null) ReadMooring(boat, out moored, out anchored);
             bool swimming = boat == null && PlayerSwimming.observerSwimming;
             bool shipyard = GameState.currentShipyard != null;
+            // Sailwind 0.39: a house the player has bought and is standing inside. It sits at a port the
+            // lookup below already names, so this adds no location detail that was not already shown.
+            bool inHouse = GameState.currentHouse != null;
 
             // The port lookup only runs where a port name may be shown, never out at sea.
             Port port = null;
@@ -132,6 +135,8 @@ namespace SailwindRichPresence
                 SetBadge(a, Art.Asleep, "Asleep");
                 if (GameState.sleepingInTavern)
                     a.Details = portName != null ? "Asleep at the tavern in " + portName : "Asleep at a tavern";
+                else if (inHouse)
+                    a.Details = portName != null ? "Asleep at home in " + portName : "Asleep at home";
                 else if (boat != null)
                     a.Details = boatName != null ? "Asleep aboard " + BoatNames.WithArticle(boatName) : "Asleep on board";
                 else
@@ -163,7 +168,10 @@ namespace SailwindRichPresence
             else
             {
                 SetBadge(a, Art.Ashore, "Ashore");
-                a.Details = portName != null ? "Ashore in " + portName : "Ashore";
+                if (inHouse)
+                    a.Details = portName != null ? "At home in " + portName : "At home";
+                else
+                    a.Details = portName != null ? "Ashore in " + portName : "Ashore";
             }
 
             return true;
@@ -224,9 +232,7 @@ namespace SailwindRichPresence
                 }
             }
 
-            // Anchor.IsSet reads a rigidbody the anchor only picks up in Start.
-            try { anchored = mooring.anchor != null && mooring.anchor.IsSet(); }
-            catch (NullReferenceException) { anchored = false; }
+            anchored = mooring.anchor != null && mooring.anchor.IsSet();
         }
 
         private Port FindPort(Vector3 player, out Transform point)

@@ -16,6 +16,11 @@ namespace SailwindRichPresence
         {
             { 10, "Dhow" },
             { 20, "Sanbuq" },
+            // Sailwind 0.39 put "BOAT dhow large (30)" on sale in Oasis. Do not let the object name mislead
+            // you: "dhow" is the dev's internal family label for the whole Al'Ankh line (small is the dhow,
+            // medium is the sanbuq), and this hull is a bigger sanbuq, not a big dhow. Players call it the
+            // large or big sanbuq, or bigbuq. The game itself carries no display string for any boat.
+            { 30, "Large Sanbuq" },
             { 40, "Cog" },
             { 50, "Brig" },
             { 70, "Jong" },
